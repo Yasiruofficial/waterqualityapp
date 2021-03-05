@@ -1,1 +1,1 @@
-wen:gunicorn waterqualityapp.wsgi
+web:gunicorn waterqualityapp.wsgi
