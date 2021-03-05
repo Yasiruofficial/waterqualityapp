@@ -26,7 +26,7 @@ SECRET_KEY = 'qk^=q1i2__wvij)w51masz!1#cnfaslon^*y+$uvou#h668ypg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','waterqualityapp.herokuapp.com']
 
 
 # Application definition
