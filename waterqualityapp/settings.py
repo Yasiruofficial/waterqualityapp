@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'waterqualityapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sdgp',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'waterqualitymeter',
         'USER': 'postgres',
-        'PASSWORD': 'sdgp123',
-        'HOST': 'localhost',
+        'PASSWORD': 'YAsiru29324253',
+        'HOST': '35.239.254.139',
     }
 }
 
