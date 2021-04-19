@@ -76,7 +76,19 @@ WSGI_APPLICATION = 'waterqualityapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+<<<<<<< HEAD
 DATABASES = { }
+=======
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'waterqualitymeter',
+        'USER': 'postgres',
+        'PASSWORD': 'YAsiru29324253',
+        'HOST': '35.239.254.139',
+    }
+}
+>>>>>>> e996965a68cf3f7b4206a6b92da0a225cd375f4a
 
 
 # Password validation
