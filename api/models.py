@@ -17,11 +17,10 @@ class Device(models.Model):
 
 
 class Data(models.Model):
-    ph = models.CharField(max_length=20, null=True)
-    us = models.CharField(max_length=20, null=True)
-    hd = models.CharField(max_length=20, null=True)
-    ts = models.CharField(max_length=20, null=True)
-    started_date = models.DateTimeField(default=datetime.now)
+    tm = models.CharField(max_length=20, null=True)
+    hu = models.CharField(max_length=20, null=True)
+    wt = models.CharField(max_length=20, null=True)
+    time = models.DateTimeField(default=datetime.now)
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
 
