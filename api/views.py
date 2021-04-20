@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+import requests
 
 from api.models import Data, Device
 
@@ -26,4 +27,5 @@ def post_data(request):
     #     else:
     #         return HttpResponse(" Error on Saving =$= ")
     # else:
-    return HttpResponse(" Worng API_KEY =$= ")
+    your_external_ip = requests.get('https://api.ipify.org')
+    return HttpResponse(your_external_ip)
