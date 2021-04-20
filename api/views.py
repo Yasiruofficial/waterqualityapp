@@ -14,9 +14,6 @@ requestObj = {}
 
 def predict_im(request):
 
-    server_ip = requests.get("https://httpbin.org/ip").json()['origin']
-    return HttpResponse(server_ip)
-
     if 'api_key' in request.GET and \
             'mobile' in request.GET:
 
