@@ -1,9 +1,9 @@
 import json
 import os
 import sys
-import requests
 from django.http import HttpResponse
 import pickle
+from datetime import datetime
 
 from django.shortcuts import render
 
@@ -200,7 +200,9 @@ def send_data_arduino(request):
                 tm = tm,
                 hu = hu,
                 wt = wt,
-                device = device_id
+                time = datetime.now(),
+                device_id = device_id
             )
             data.save()
+            return HttpResponse("Success")
 
