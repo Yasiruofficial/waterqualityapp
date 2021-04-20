@@ -1,31 +1,21 @@
 from django.http import HttpResponse
-import requests
+import pickle
 
-from api.models import Data, Device
+from api.models import Data
+from api.models import Subscriber
 
 
-def post_data(request):
+def ml_predict_mobile(request):
     api_key = "95d465b0-0e99-4619-9553-186c4b5d294e"
 
-    # if request.GET["api_key"] == api_key:
+    file_object = open('/ml/knn_model.pkl', 'rb')
+    model = pickle.load(file_object)
 
-    #     if 'ph' in request.GET and \
-    #             'us' in request.GET and \
-    #             'hd' in request.GET and \
-    #             'ts' in request.GET and \
-    #             'device' in request.GET:
+    predict = model.predict([[21, 32, 45]])
+    output = int(predict[0])
+    print(output)
 
-    #         data = Data()
-    #         data.ph = request.GET["ph"]
-    #         data.us = request.GET["us"]
-    #         data.hd = request.GET["hd"]
-    #         data.ts = request.GET["ts"]
-    #         data.device_id = request.GET["device"]
-    #         data.save()
+    mobile = request.GET['mobile']
+    subscriber = Subscriber.filter(phone_number=mobile)
+    latest_data = Data.filter(device_id=subscriber.device_id).order_by('-started_date')
 
-    #         return HttpResponse(" Inserted =$= ")
-    #     else:
-    #         return HttpResponse(" Error on Saving =$= ")
-    # else:
-    your_external_ip = requests.get('https://api.ipify.org')
-    return HttpResponse(your_external_ip)
