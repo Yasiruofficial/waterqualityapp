@@ -4,20 +4,31 @@ import sys
 import requests
 from django.http import HttpResponse
 import pickle
+
+from django.shortcuts import render
+
 from api.models import Data, Device, Subscriber
 
 sys.path.insert(1, os.path.dirname(__file__))
 
-api_key = "95d465b0-0e99-4619-9553-186c4b5d294e"
+api_key_im = "95d465b0-0e99-4619-9553-186c4b5d294e"
+api_key_arduino = "ebfb7ff0-b2f6-41c8-bef3-4fba17be410c"
 requestObj = {}
 
 
-def predict_im(request):
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
 
+
+def handler500(request):
+    return render(request, '500.html', status=500)
+
+
+def predict_im(request):
     if 'api_key' in request.GET and \
             'mobile' in request.GET:
 
-        if request.GET["api_key"] == api_key:
+        if request.GET["api_key"] == api_key_im:
 
             mobile = request.GET['mobile']
             file_object = open(os.path.dirname(__file__) + '/ml/knn_model.pkl', 'rb')
@@ -72,7 +83,7 @@ def current_data_im(request):
     if 'api_key' in request.GET and \
             'mobile' in request.GET:
 
-        if request.GET["api_key"] == api_key:
+        if request.GET["api_key"] == api_key_im:
 
             mobile = request.GET['mobile']
 
@@ -125,7 +136,7 @@ def reg_im(request):
             'mobile' in request.GET and \
             'device_id' in request.GET:
 
-        if request.GET["api_key"] == api_key:
+        if request.GET["api_key"] == api_key_im:
 
             mobile = request.GET['mobile']
             device_id = request.GET['device_id']
@@ -170,4 +181,26 @@ def reg_im(request):
         requestObj['value'] = 'incorrect request type'
         return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
-# tempreture humiidity warerlvl
+
+def send_data_arduino(request):
+    if 'api_key' in request.GET and \
+            'tm' in request.GET and \
+            'hu' in request.GET and \
+            'wt' in request.GET and \
+            'device_id' in request.GET:
+
+        if request.GET["api_key"] == api_key_arduino:
+
+            tm = request.GET['tm']
+            hu = request.GET['hu']
+            wt = request.GET['wt']
+            device_id = request.GET['device_id']
+
+            data = Data(
+                tm = tm,
+                hu = hu,
+                wt = wt,
+                device = device_id
+            )
+            data.save()
+
