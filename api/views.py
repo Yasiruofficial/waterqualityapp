@@ -11,8 +11,8 @@ from api.models import Data, Device, Subscriber
 
 sys.path.insert(1, os.path.dirname(__file__))
 
-api_key_im = "95d465b0-0e99-4619-9553-186c4b5d294e"
-api_key_arduino = "ebfb7ff0-b2f6-41c8-bef3-4fba17be410c"
+api_key_im = "95d465b00e9946199553186c4b5d294e"
+api_key_arduino = "ebfb7ff0b2f641c8bef34fba17be410c"
 requestObj = {}
 
 
@@ -70,7 +70,7 @@ def predict_im(request):
 
         else:
             requestObj['message'] = 'error'
-            requestObj['value'] = 'authorized access'
+            requestObj['value'] = 'Unauthorized access'
             return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
     else:
@@ -169,10 +169,9 @@ def reg_im(request):
                 requestObj['value'] = str(sys.exc_info()[0])
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
-
         else:
             requestObj['message'] = 'error'
-            requestObj['value'] = 'authorized access'
+            requestObj['value'] = 'Unauthorized access'
             return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
     else:
