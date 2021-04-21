@@ -4,7 +4,6 @@ import sys
 from django.http import HttpResponse
 import pickle
 from datetime import datetime
-
 from django.shortcuts import render
 
 from api.models import Data, Device, Subscriber, Location
@@ -99,9 +98,9 @@ def current_data_im(request):
 
                 requestObj['message'] = 'success'
                 requestObj['value'] = {
-                    'turbidity level': int(latest_data.tm),
-                    'humidity level': int(latest_data.hu),
-                    'water level': int(latest_data.wt),
+                    'turbidity level': latest_data.tm,
+                    'humidity level': latest_data.hu,
+                    'water level': latest_data.wt,
                     'location' : location.name
                 }
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
