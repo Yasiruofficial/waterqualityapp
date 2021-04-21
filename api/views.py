@@ -24,6 +24,9 @@ def handler500(request):
     return render(request, '500.html', status=500)
 
 
+def home(request):
+    return HttpResponse(datetime.now())
+
 def predict_im(request):
     if 'api_key' in request.GET and \
             'mobile' in request.GET:
