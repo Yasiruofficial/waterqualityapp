@@ -117,11 +117,6 @@ def current_data_im(request):
                 requestObj['value'] = 'no data found on that device'
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
-            except:
-
-                requestObj['message'] = 'error'
-                requestObj['value'] = str(sys.exc_info()[0])
-                return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
 
         else:
