@@ -7,7 +7,7 @@ from datetime import datetime
 
 from django.shortcuts import render
 
-from api.models import Data, Device, Subscriber
+from api.models import Data, Device, Subscriber, Location
 
 sys.path.insert(1, os.path.dirname(__file__))
 
@@ -91,12 +91,15 @@ def current_data_im(request):
 
                 subscriber = Subscriber.objects.get(phone_number=mobile)
                 latest_data = Data.objects.filter(device_id=subscriber.device_id).order_by('-time')[0]
+                device = Device.objects.get(id=subscriber.device_id)
+                location = Location.objects.get(id=device.location_id)
 
                 requestObj['message'] = 'success'
                 requestObj['value'] = {
                     'turbidity level': int(latest_data.tm),
                     'humidity level': int(latest_data.hu),
-                    'water level': int(latest_data.wt)
+                    'water level': int(latest_data.wt),
+                    'location' : location.name
                 }
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
