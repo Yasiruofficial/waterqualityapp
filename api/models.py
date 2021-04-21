@@ -20,7 +20,7 @@ class Data(models.Model):
     tm = models.CharField(max_length=20, null=True)
     hu = models.CharField(max_length=20, null=True)
     wt = models.CharField(max_length=20, null=True)
-    time = models.DateTimeField(default=datetime.now,)
+    time = models.DateTimeField(default=datetime.now)
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
 
