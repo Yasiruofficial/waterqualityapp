@@ -25,5 +25,5 @@ class Data(models.Model):
 
 
 class Subscriber(models.Model):
-    phone_number = models.CharField(max_length=30, null=True)
+    phone_number = models.CharField(max_length=500, null=True)
     device = models.ForeignKey(Device, on_delete=models.CASCADE)

@@ -155,7 +155,7 @@ def reg_im(request):
                     requestObj['value'] = 'successfully registered'
                     return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
-                requestObj['message'] = 'success'
+                requestObj['message'] = 'error'
                 requestObj['value'] = 'user already in'
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
