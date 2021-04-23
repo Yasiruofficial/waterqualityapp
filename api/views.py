@@ -64,7 +64,7 @@ def predict_im(request):
             except Subscriber.DoesNotExist:
 
                 requestObj['message'] = 'error'
-                requestObj['value'] = 'user not found'
+                requestObj['value'] = 'User Not Found. To Learn More visit http://waterqualityapp.herokuapp.com/api'
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
             except IndexError:
@@ -73,11 +73,11 @@ def predict_im(request):
                 requestObj['value'] = 'no data found on that device'
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
-            # except:
-            #
-            #     requestObj['message'] = 'error'
-            #     requestObj['value'] = str(sys.exc_info()[0])
-            #     return HttpResponse(json.dumps(requestObj), content_type="application/json")
+            except:
+
+                requestObj['message'] = 'error'
+                requestObj['value'] = str(sys.exc_info()[0])
+                return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
 
         else:
@@ -126,7 +126,7 @@ def current_data_im(request):
             except Subscriber.DoesNotExist:
 
                 requestObj['message'] = 'error'
-                requestObj['value'] = 'user not found'
+                requestObj['value'] = 'User Not Found. To Learn More visit http://waterqualityapp.herokuapp.com/api'
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
             except IndexError:
@@ -134,12 +134,12 @@ def current_data_im(request):
                 requestObj['message'] = 'error'
                 requestObj['value'] = 'no data found on that device'
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
-            #
-            # except:
-            #
-            #     requestObj['message'] = 'error'
-            #     requestObj['value'] = str(sys.exc_info()[0])
-            #     return HttpResponse(json.dumps(requestObj), content_type="application/json")
+
+            except:
+
+                requestObj['message'] = 'error'
+                requestObj['value'] = str(sys.exc_info()[0])
+                return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
 
         else:
@@ -179,7 +179,7 @@ def reg_im(request):
                     return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
                 requestObj['message'] = 'error'
-                requestObj['value'] = 'user already in'
+                requestObj['value'] = 'user Already Registered'
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
             except Device.DoesNotExist:
