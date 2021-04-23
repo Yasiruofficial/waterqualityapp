@@ -10,8 +10,7 @@ from api.models import Data, Device, Subscriber, Location
 
 sys.path.insert(1, os.path.dirname(__file__))
 
-api_key_im = "95d465b00e9946199553186c4b5d294e"
-api_key_arduino = "ebfb7ff0b2f641c8bef34fba17be410c"
+api_key = "95d465b00e9946199553186c4b5d294e"
 requestObj = {}
 
 
@@ -31,7 +30,7 @@ def predict_im(request):
     if 'api_key' in request.GET and \
             'mobile' in request.GET:
 
-        if request.GET["api_key"] == api_key_im:
+        if request.GET["api_key"] == api_key:
 
             mobile = request.GET['mobile']
             file_object = open(os.path.dirname(__file__) + '/ml/knn_model.pkl', 'rb')
@@ -95,7 +94,7 @@ def current_data_im(request):
     if 'api_key' in request.GET and \
             'mobile' in request.GET:
 
-        if request.GET["api_key"] == api_key_im:
+        if request.GET["api_key"] == api_key:
 
             mobile = request.GET['mobile']
 
@@ -159,7 +158,7 @@ def reg_im(request):
             'mobile' in request.GET and \
             'device_id' in request.GET:
 
-        if request.GET["api_key"] == api_key_im:
+        if request.GET["api_key"] == api_key:
 
             mobile = request.GET['mobile']
             device_id = request.GET['device_id']
@@ -203,31 +202,22 @@ def reg_im(request):
         requestObj['value'] = 'incorrect request type'
         return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
-# def send_data_arduino(request):
-#     if 'api_key' in request.GET and \
-#             'tr' in request.GET and \
-#             'tm' in request.GET and \
-#             'ph' in request.GET and \
-#             'hu' in request.GET and \
-#             'wt' in request.GET and \
-#             'device_id' in request.GET:
-#
-#         if request.GET["api_key"] == api_key_arduino:
-#             tr = request.GET['tr']
-#             tm = request.GET['tm']
-#             ph = request.GET['ph']
-#             hu = request.GET['hu']
-#             wt = request.GET['wt']
-#             device_id = request.GET['device_id']
-#
-#             data = Data(
-#                 tr=tr,
-#                 tm=tm,
-#                 ph=ph,
-#                 hu=hu,
-#                 wt=wt,
-#                 time=datetime.now(),
-#                 device_id=device_id
-#             )
-#             data.save()
-#             return HttpResponse("Success")
+
+def getDeviceDetails(request):
+    if 'device_id' in request.GET:
+
+        if request.GET["api_key"] == api_key:
+
+            device_id = request.GET['device_id']
+            latest_data = Data.objects.filter(device_id=device_id).order_by('-time')[0]
+
+            requestObj['message'] = 'success'
+            requestObj['value'] = {
+                'temperature level': latest_data.tm,
+                'turbidity level': latest_data.tr,
+                'ph value': latest_data.ph,
+                'humidity level': latest_data.hu,
+                'water level': latest_data.wt
+            }
+
+            return HttpResponse(json.dumps(requestObj), content_type="application/json")
