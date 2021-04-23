@@ -1,5 +1,4 @@
 from datetime import datetime
-from timezone_field import TimeZoneField
 from django.db import models
 
 
@@ -17,10 +16,12 @@ class Device(models.Model):
 
 
 class Data(models.Model):
+    tr = models.CharField(max_length=20, null=True)
     tm = models.CharField(max_length=20, null=True)
+    ph = models.CharField(max_length=20, null=True)
     hu = models.CharField(max_length=20, null=True)
     wt = models.CharField(max_length=20, null=True)
-    time = models.DateTimeField(default=datetime.now)
+    time = models.DateTimeField(null=True)
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
 

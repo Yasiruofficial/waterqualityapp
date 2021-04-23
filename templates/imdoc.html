@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        .topTopic{
+            position: relative;
+            text-align: center;
+            font-size: 29px;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+
+        .topTopic h1{
+            position: absolute; 
+            margin-top: 90px;
+        }
+
+        .topTopic img{
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 80%;
+        margin: 0 auto;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 10px;
+            width: 33%;
+        }
+  
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="topTopic">
+        <h1>Water Qualifier</h1>
+        <img src="/static/imgs/parameters_waterquality.jpg">
+    </div>
+    <br><br><br>
+    <h2 align='center'><u>**IdeaMart Key Bindings**</u></h2>
+    <br>
+    <table align="center">
+        <center>සියල්ලයම ප්‍රථමයෙන් ඔබ අප සේවාව හා ලියාපදිංචි විය යුතු වේ. එයට ඔබ කල යුත්තේ <b>'' REG <හිස්තැනක්> waterlvl '' </b> ලෙස ටයිප් කර 77177 ට SEND කිරීම පමණි.</center>
+        <br/>
+        <hr/>
+        <br/>
+        <tr>
+            <td>waterlvl reg < device number ></td>
+            <td class="ab">
+                ඉන්පසු අපගේ ජල තත්ත්ව උපකරණයක් හා ලියාපදිංචි වීමට මෙය type කර 77177 වෙත කෙටි පණිවිඩයක් එවන්න. </td>
+            
+        </tr>
+        <tr>
+            <td>waterlvl now  </td>
+            <td>  පරිශිලකය දැනටමත් ලියාපදිංචි වී ඇත්නම්, එම අවස්ථාවේ ඇති දත්ත පෙන්වයි.</td>
+            
+        </tr>
+        <tr>
+            <td>waterlvl predict</td>
+            <td>මාස 6 කට පසු ජල මට්ටමේ අවදානම දැනගැනීම සදහා.</td>
+        </tr>
+    </table>
+
+    <br><br><br>
+    <h2 align='center'><u>**Device List with Locations**</u></h2>
+    <br>
+    <table align="center">
+        <tr>
+            <th>Device Number</th>
+            <th>Device</th>
+            <th>Located In</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>ESP 8266</td>
+            <td>කැලණිය</td>
+            
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Arduino Uno</td>
+            <td>බොල්ගොඩ</td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
