@@ -75,7 +75,7 @@ def predict_im(request):
             except:
 
                 requestObj['message'] = 'error'
-                requestObj['value'] = str(sys.exc_info()[0])
+                requestObj['value'] = "Something went wrong please try again later"
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
 
@@ -137,7 +137,7 @@ def current_data_im(request):
             except:
 
                 requestObj['message'] = 'error'
-                requestObj['value'] = str(sys.exc_info()[0])
+                requestObj['value'] = "Something went wrong please try again later"
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
 
@@ -188,7 +188,7 @@ def reg_im(request):
 
             except:
                 requestObj['message'] = 'error'
-                requestObj['value'] = str(sys.exc_info()[0])
+                requestObj['value'] = "Wrong Keyword Detected. To Learn More About Keyword visit http://waterqualityapp.herokuapp.com/api"
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
         else:
