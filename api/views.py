@@ -107,7 +107,7 @@ def current_data_im(request):
                 location = Location.objects.get(id=device.location_id)
 
                 drinkable = 'no'
-                if (6.5 <= latest_data.ph <= 8.5) and (latest_data.tr <= 5):
+                if (6.5 <= float(latest_data.ph) <= 8.5) and (float(latest_data.tr) <= 5):
                     drinkable = 'yes'
 
                 requestObj['message'] = 'success'
@@ -134,12 +134,12 @@ def current_data_im(request):
                 requestObj['message'] = 'error'
                 requestObj['value'] = 'no data found on that device'
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
-
-            except:
-
-                requestObj['message'] = 'error'
-                requestObj['value'] = str(sys.exc_info()[0])
-                return HttpResponse(json.dumps(requestObj), content_type="application/json")
+            #
+            # except:
+            #
+            #     requestObj['message'] = 'error'
+            #     requestObj['value'] = str(sys.exc_info()[0])
+            #     return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
 
         else:
