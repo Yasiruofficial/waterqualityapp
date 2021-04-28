@@ -50,13 +50,13 @@ def predict_im(request):
                 requestObj['message'] = 'success'
 
                 if int(predict[0]) == 1:
-                    requestObj['value'] = "As our predicting , The Risk of flooding in your area is LOW in next 6 month"
+                    requestObj['value'] = "As our predicting , The Risk of flooding in your area is LOW after 6 months"
                 if int(predict[0]) == 2:
                     requestObj[
-                        'value'] = "As our predicting , The Risk of flooding in your area is MEDIUM in next 6 month"
+                        'value'] = "As our predicting , The Risk of flooding in your area is MEDIUM after 6 months"
                 if int(predict[0]) == 3:
                     requestObj[
-                        'value'] = "As our predicting , The Risk of flooding in your area is HIGH in next 6 month"
+                        'value'] = "As our predicting , The Risk of flooding in your area is HIGH after 6 months"
 
                 return HttpResponse(json.dumps(requestObj), content_type="application/json")
 
