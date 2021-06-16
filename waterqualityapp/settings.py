@@ -70,10 +70,10 @@ WSGI_APPLICATION = 'waterqualityapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'SDGP12345678',
-        'HOST': '35.238.61.0',
+        'NAME': 'ynmgmswl',
+        'USER': 'ynmgmswl',
+        'PASSWORD': 'TU-yGqp4CUB9GfxnTpHrqhDQgBm2rAYd',
+        'HOST': 'batyr.db.elephantsql.com',
         'PORT': '5432'
     }
 }
